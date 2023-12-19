@@ -1,30 +1,38 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+      aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Updated navbar-brand with logo -->
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/logo/logo.png" alt="Logo" width="30" height="30"
+        class="d-inline-block align-text-top font-monospace">
+      Apply
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active font-monospace" aria-current="page" href="#">Privacy Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active font-monospace" href="#">Terms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active font-monospace">Contact</a>
+        </li>
+      </ul>
+
+      <button style="margin-right: 6px;" type="button" class="btn btn-outline-secondary font-monospace" routerLink="auth/signup-user">Register
       </button>
-      
-      <!-- Updated navbar-brand with logo -->
-      <a class="navbar-brand" href="">
-        <img src="../../../assets/logo/logo.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top font-monospace">
-        Apply
-      </a>
-      
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active font-monospace" aria-current="page" href="#">Privacy Policy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active font-monospace" href="#">Terms</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active font-monospace" >Contact</a>
-          </li>
-        </ul>
-        
-        <button type="button" class="btn btn-outline-secondary font-monospace" routerLink="auth/signup-user">SignUp</button>
-      </div>
+
+
+      <button type="button" class="btn btn-outline-secondary font-monospace" routerLink="auth/login">Login
+      </button>
+
+
     </div>
-  </nav>
-  
+  </div>
+</nav>

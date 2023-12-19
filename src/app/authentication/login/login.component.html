@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Column for Simple Text -->
+        <div class="col-md-6 bg-body-tertiary">
+            <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 50px);">
+                <div style="margin-bottom: 150px;">
+                    <p class="font-monospace" style="font-size: 20px;">Apply</p>
+                    <p class="font-monospace" style="font-size: 30px; font-weight: bold;">Make your application easier
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column for Signup Form -->
+        <div class="col-md-5">
+            <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 50px);">
+                <div>
+                    <p class="font-monospace" style="font-size: 20px;">Login</p>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" style="margin-bottom: 100px;">
+
+                        <div class="mb-3">
+                            <label class="font-monospace" for="email">Email</label>
+                            <input formControlName='email' type="email" class="form-control" name="email" id="email">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && loginForm.get('email')?.hasError('required')">
+                                Email is required
+                            </div>
+                        </div>
+                    
+                    
+                        <div class="mb-3">
+                            <label class="font-monospace" for="password">Password</label>
+                            <input formControlName='password' type="password" class="form-control" name="password" id="password">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && loginForm.get('password')?.hasError('required')">
+                                Password is required
+                            </div>
+                        </div>
+                    
+                        <button class="btn btn-secondary font-monospace" type="submit">Login</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
