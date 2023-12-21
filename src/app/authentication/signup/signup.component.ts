@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import intlTelInput from 'intl-tel-input';
-import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +8,15 @@ import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  
   registerClientForm: FormGroup = new FormGroup({});
+  companyForm: FormGroup = new FormGroup({});
   isSubmitted:boolean = false;
+
+  text: string = 'Create an account and post your a job offer'
+  currentStep = 1; // Track the current step
+  totalSteps = 2; // Total number of steps
+  progressPercentage = 0 ;
 
   ngOnInit(): void {
     this.initRegisterForm();
@@ -43,9 +49,30 @@ export class SignupComponent implements OnInit {
 
   registerClient(): void {
     this.isSubmitted = true;
-    if(this.registerClientForm.valid){
-      console.log(this.registerClientForm.value)
+    console.log(this.currentStep)
+    // Check if the current form is valid before proceeding to the next step
+    const currentForm = this.getCurrentForm();
+    if (currentForm.valid) {
+      // Update progress value
+      this.progressPercentage += (100 / this.totalSteps);
+
+      // Check if there are more steps
+      if (this.currentStep < this.totalSteps) {
+        // Move to the next step
+        this.currentStep++;
+      } else {
+        // Logic to navigate to the next page or perform other actions
+        // For example, you can use Angular Router to navigate to the next page
+      }
     }
+  }
+  private getCurrentForm(): FormGroup {
+    // Return the current form based on the current step
+    return this.currentStep === 1 ? this.registerClientForm : this.companyForm;
+  }
+
+  submitCompanyInfo(){
+
   }
 
   ngAfterViewInit(): void {

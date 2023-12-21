@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
+import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
+import { LandingPageComponent } from './layouts/landing-page/landing-page.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 
 const routes: Routes = [
-  {path:"auth/signup-user", component: SignupComponent},
-  {path: "auth/login", component: LoginComponent}
+  {path:'', component: LandingPageComponent},
+  {path:"auth/signup-company", component: SignupComponent},
+  {path: "auth/login", component: LoginComponent},
+  {path: "auth/forgot-password", component: ForgotPasswordComponent},
+  {path: "auth/reset-password", component: ResetPasswordComponent}
 ];
 
 @NgModule({

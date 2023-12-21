@@ -6,7 +6,7 @@
     </button>
 
     <!-- Updated navbar-brand with logo -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="['/']">
       <img src="../../../assets/logo/logo.png" alt="Logo" width="30" height="30"
         class="d-inline-block align-text-top font-monospace">
       Apply
@@ -15,24 +15,19 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active font-monospace" aria-current="page" href="#">Privacy Policy</a>
+          <a class="nav-link active font-monospace" routerLink="['/']" routerLinkActive="active">Privacy Policy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active font-monospace" href="#">Terms</a>
+          <a class="nav-link active font-monospace" routerLink="['/']" routerLinkActive="active">Terms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active font-monospace">Contact</a>
+          <a class="nav-link active font-monospace" routerLink="['/']" routerLinkActive="active">Contact</a>
         </li>
       </ul>
 
-      <button style="margin-right: 6px;" type="button" class="btn btn-outline-secondary font-monospace" routerLink="auth/signup-user">Register
-      </button>
+      <button style="margin-right: 6px;" type="button" class="btn btn-outline-secondary font-monospace" (click)="navigateTo('auth/signup-company')">Register</button>
 
-
-      <button type="button" class="btn btn-outline-secondary font-monospace" routerLink="auth/login">Login
-      </button>
-
-
+      <button type="button" class="btn btn-outline-secondary font-monospace" (click)="navigateTo('auth/login')">Login</button>
     </div>
   </div>
 </nav>

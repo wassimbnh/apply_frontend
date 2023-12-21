@@ -2,18 +2,13 @@
     <div class="row">
         <!-- Left Column for Simple Text -->
         <div class="col-md-6 bg-body-tertiary">
-            <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 50px);">
-                <div style="margin-bottom: 150px;">
-                    <p class="font-monospace" style="font-size: 20px;">Apply</p>
-                    <p class="font-monospace" style="font-size: 30px; font-weight: bold;">Make your application easier
-                    </p>
-                </div>
-            </div>
+            <app-side-grid
+               [text]="text"></app-side-grid>
         </div>
 
         <!-- Right Column for Signup Form -->
         <div class="col-md-5">
-            <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 50px);">
+            <div class="d-flex align-items-center justify-content-center" style="height: calc(100vh - 10px);">
                 <div>
                     <p class="font-monospace" style="font-size: 20px;">Login</p>
 
@@ -26,8 +21,7 @@
                                 Email is required
                             </div>
                         </div>
-                    
-                    
+
                         <div class="mb-3">
                             <label class="font-monospace" for="password">Password</label>
                             <input formControlName='password' type="password" class="form-control" name="password" id="password">
@@ -35,10 +29,30 @@
                                 Password is required
                             </div>
                         </div>
-                    
+
                         <button class="btn btn-secondary font-monospace" type="submit">Login</button>
                     </form>
-                    
+
+                    <!-- Container for links with reduced margin -->
+                    <div class="d-flex justify-content-between" style="margin-bottom: 20px;">
+                        <div>
+                            <label class="font-monospace" for="password">Don't have an account? 
+                                <a href="/auth/signup-user">Register?</a>
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex justify-content-between" style="margin-bottom: 20px;">
+                        
+
+                        <div>
+                            <label class="font-monospace" for="password">Did you forget your password? 
+                                <a href="/auth/forgot-password">Reset?</a>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
