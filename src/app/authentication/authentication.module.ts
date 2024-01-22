@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { SideGridComponent } from '../layouts/side-grid/side-grid.component';
 import { LayoutsModule } from '../layouts/layouts.module';
+import { SignupUserComponent } from './signup-user/signup-user.component';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { LayoutsModule } from '../layouts/layouts.module';
     SignupComponent,
     LoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent, 
+    ForgotPasswordComponent,
+    SignupUserComponent, 
   ],
   imports: [
     CommonModule,

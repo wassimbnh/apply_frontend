@@ -22,7 +22,7 @@
                         <small class="text-muted font-monospace">{{ progressPercentage }}% complete</small>
                       </div>
                       
-                    <form *ngIf="currentStep === 1"[formGroup]="registerClientForm" (ngSubmit)="registerClient()" style="margin-bottom: 100px;">
+                    <form *ngIf="currentStep === 1"[formGroup]="registerClientForm" (ngSubmit)="registerAdmin()" style="margin-bottom: 100px;">
                         <div class="mb-3">
                             <label class="font-monospace">First Name</label>
                             <input formControlName='firstName' type="text" class="form-control" name="firstName" id="firstName">
@@ -74,33 +74,33 @@
                             </div>
                         </div>
                     
-                        <!-- Add more input fields as needed -->
-                        <button class="btn btn-secondary font-monospace" type="submit" (click)="registerClient()" >Next</button>
+                        
+                        <button class="btn btn-secondary font-monospace" type="submit" (click)="registerAdmin()" >Next</button>
                     </form>
                     
-                    <form *ngIf="currentStep === 2" [formGroup]="companyForm" (ngSubmit)="registerClient()" style="margin-bottom: 100px;">
+                    <form *ngIf="currentStep === 2" [formGroup]="companyForm" (ngSubmit)="registerAdmin()" style="margin-bottom: 100px;">
 
                         <div class="mb-3">
-                            <label class="font-monospace" for="phoneNumber">Company Name</label>
+                            <label class="font-monospace" for="companyName">Company Name</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div id="flag-container"></div>
                                 </div>
-                                <input formControlName="phone" type="tel" class="form-control" name="phone" id="phoneNumber">
+                                <input formControlName="companyName" type="tel" class="form-control" name="companyName" id="companyName">
                             </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('phone')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && companyForm.get('companyName')?.hasError('required')">
                                 Company name is required
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="font-monospace" for="companyName">Company Name</label>
+                            <label class="font-monospace" for="contactEmail">Contact Email</label>
                             <div class="input-group">
                             
-                                <input formControlName="companyName" type="tel" class="form-control" name="phone" id="phoneNumber">
+                                <input formControlName="contactEmail" type="text" class="form-control" name="contactEmail" id="contactEmail">
                             </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('phone')?.hasError('required')">
-                                Company name is required
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && companyForm.get('contactEmail')?.hasError('required')">
+                                Contact email is required
                             </div>
                         </div>
 
@@ -109,29 +109,29 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div id="flag-container"></div>
-                                </div>
-                                <input formControlName="companyWebsite" type="tel" class="form-control" name="phone" id="phoneNumber">
-                            </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('phone')?.hasError('required')">
+                                </div> 
+                                <input formControlName="companyWebsite" type="text" class="form-control" name="companyWebsite" id="companyWebsite">
+                            </div>                                                                              
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && companyForm.get('companyWebsite')?.hasError('required')">
                                 Company website is required
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="font-monospace" for="companyType">Company Type</label>
-                            <select formControlName="companyType" class="custom-select form-control" id="companyType">
+                            <select formControlName="companyField" class="custom-select form-control" id="companyType">
                                 <option value="IT">IT</option>
                                 <option value="Insurance">Insurance</option>
                                 <option value="Finance">Finance</option>
                                 <option value="Medicine">Medicine</option>
                             </select>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('companyType')?.hasError('required')">
-                                Company type is required
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && companyForm.get('companyField')?.hasError('required')">
+                                Company field is required
                             </div>
                         </div>
                         
 
-                        <button class="btn btn-secondary font-monospace" type="button" (click)="registerClient()">Register</button>
+                        <button class="btn btn-secondary font-monospace" type="button" (click)="registerAdmin()">Register</button>
                       </form>
 
                 </div>
