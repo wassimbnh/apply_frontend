@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import intlTelInput from 'intl-tel-input';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import { AuthenticationService } from '../../authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { error } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,12 +12,18 @@ import { AuthenticationService } from '../../authentication.service';
 })
 export class SignupComponent implements OnInit {
   
-  constructor(private authService: AuthenticationService){
+  constructor(private authService: AuthenticationService,
+             private router :Router){
 
   }
   registerClientForm: FormGroup = new FormGroup({});
   companyForm: FormGroup = new FormGroup({});
   isSubmitted:boolean = false;
+
+  combinedFormValues: any = {};
+
+  successMessage: string = '';
+
 
   text: string = 'Create an account and post your a job offer'
   currentStep = 1; 
@@ -66,23 +74,43 @@ export class SignupComponent implements OnInit {
   }
 
   registerAdmin(): void {
-    this.isSubmitted = !this.isSubmitted;
+    this.isSubmitted = true;
     const currentForm = this.getCurrentForm();
+    
     
     if (currentForm.valid) {
       // Update progress value
       this.progressPercentage += (100 / this.totalSteps);
       this.isSubmitted = !this.isSubmitted;
 
+      this.combinedFormValues = { ...this.combinedFormValues, ...currentForm.value };
+
       // Check if there are more steps
       if (this.currentStep < this.totalSteps) {
         // Move to the next step
         this.currentStep++;
       } else {
-        const newAdmin = currentForm.value
-        console.log(newAdmin)
+        console.log(this.combinedFormValues);
+        this.authService.signUpAdmin(this.combinedFormValues).subscribe(
+          (response) => {
+            // Handle successful response if needed
+            console.log('Signup successful:', response);
+            this.successMessage = 'Please check your email !'; 
+            
+            this.registerClientForm.reset();
+            this.companyForm.reset();
+            
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 2000);
+          },
+          (error) => {
+            // Handle error here
+            console.error('Signup error:', error);
+          })
 
       }
+      
     }
   }
   private getCurrentForm(): FormGroup {
@@ -90,9 +118,6 @@ export class SignupComponent implements OnInit {
     return this.currentStep === 1 ? this.registerClientForm : this.companyForm;
   }
 
-  submitCompanyInfo(){
-
-  }
 
   ngAfterViewInit(): void {
     const input = document.querySelector('#phoneNumber') as HTMLInputElement;

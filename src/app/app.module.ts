@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { LayoutsModule } from './layouts/layouts.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LayoutsModule } from './layouts/layouts.module';
     ReactiveFormsModule,
     AuthenticationModule,
     LayoutsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
