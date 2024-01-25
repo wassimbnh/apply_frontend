@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
+import { error } from 'console';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-client',
@@ -7,9 +10,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './signup-client.component.css'
 })
 export class SignupClientComponent implements OnInit{
+
+
+  constructor(private authService: AuthenticationService,
+             private router: Router){}
+
   text: string = 'Find your first job and apply quickly'
   isSubmitted: boolean = false;
-  registerUserForm: FormGroup = new FormGroup({})
+  registerClientForm: FormGroup = new FormGroup({})
+
+  errorMessage: string = '';
+  successMessage: string = '';
 
 
   ngOnInit(): void {
@@ -17,7 +28,7 @@ export class SignupClientComponent implements OnInit{
   }
 
   initRegisterForm(): void {
-    this.registerUserForm = new FormGroup({
+    this.registerClientForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
@@ -40,10 +51,26 @@ export class SignupClientComponent implements OnInit{
     });
   }
   
-  registerUser() {
+  registerClient() {
     this.isSubmitted = true;
-    if(this.registerUserForm.valid){
-      console.log(this.registerUserForm.value)
+    if(this.registerClientForm.valid){
+      this.authService.signUpClient(this.registerClientForm.value).subscribe(
+        (response)=>{
+          console.log("response:", response) 
+            
+          this.registerClientForm.reset();
+          
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2000); 
+        },
+        (error) =>{
+          this.errorMessage = error.error.message
+          setTimeout(()=>{
+            this.errorMessage = ''
+          },3000)
+        }
+      )
     }
 
   }

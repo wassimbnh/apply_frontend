@@ -18,4 +18,8 @@ export class AuthenticationService {
   confirmEmail(token: string){
     return this.http.post(`${this.apiUrl}/confirm-email/${token}`,'' )
   }
+
+  signUpClient(client: any){
+    return this.http.post(`${this.apiUrl}/signup-client`,client)
+  }
 }
