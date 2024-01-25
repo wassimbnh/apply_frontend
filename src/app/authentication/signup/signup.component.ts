@@ -30,6 +30,8 @@ export class SignupComponent implements OnInit {
   totalSteps = 2;
   progressPercentage = 0 ;
 
+  confirmEmailMessage: string = '';
+  
   ngOnInit(): void {
     this.initRegisterForm();
   }
@@ -94,7 +96,6 @@ export class SignupComponent implements OnInit {
         this.authService.signUpAdmin(this.combinedFormValues).subscribe(
           (response) => {
             // Handle successful response if needed
-            console.log('Signup successful:', response);
             this.successMessage = 'Please check your email !'; 
             
             this.registerClientForm.reset();
@@ -102,10 +103,10 @@ export class SignupComponent implements OnInit {
             
             setTimeout(() => {
               this.router.navigate(['/']);
-            }, 2000);
+            }, 2000); 
           },
           (error) => {
-            // Handle error here
+            this.confirmEmailMessage = error.message
             console.error('Signup error:', error);
           })
 

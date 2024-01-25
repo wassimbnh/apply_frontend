@@ -14,4 +14,8 @@ export class AuthenticationService {
   signUpAdmin(admin:any){
    return this.http.post(`${this.apiUrl}/signup-company`, admin)
   }
+
+  confirmEmail(token: string){
+    return this.http.post(`${this.apiUrl}/confirm-email/${token}`,'' )
+  }
 }

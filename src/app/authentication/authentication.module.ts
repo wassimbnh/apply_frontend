@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { LayoutsModule } from '../layouts/layouts.module';
-import { SignupUserComponent } from './signup-user/signup-user.component';
+import { SignupClientComponent } from './signup-client/signup-client.component';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { SignupUserComponent } from './signup-user/signup-user.component';
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    SignupUserComponent, 
+    SignupClientComponent, 
   ],
   imports: [
     CommonModule,

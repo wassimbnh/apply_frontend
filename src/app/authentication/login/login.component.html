@@ -12,6 +12,9 @@
                 <div>
                     <p class="font-monospace" style="font-size: 20px;">Login</p>
 
+                    <div *ngIf="confirmEmailMessage" class="alert alert-success" role="alert">
+                        {{ confirmEmailMessage }}
+                      </div>
                     <form [formGroup]="loginForm" (ngSubmit)="login()" style="margin-bottom: 100px;">
 
                         <div class="mb-3">

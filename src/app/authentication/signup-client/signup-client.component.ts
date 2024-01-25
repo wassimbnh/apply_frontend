@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup-user',
-  templateUrl: './signup-user.component.html',
-  styleUrl: './signup-user.component.css'
+  selector: 'app-signup-client',
+  templateUrl: './signup-client.component.html',
+  styleUrl: './signup-client.component.css'
 })
-export class SignupUserComponent implements OnInit {
-
+export class SignupClientComponent implements OnInit{
   text: string = 'Find your first job and apply quickly'
   isSubmitted: boolean = false;
   registerUserForm: FormGroup = new FormGroup({})
@@ -48,5 +47,4 @@ export class SignupUserComponent implements OnInit {
     }
 
   }
-
 }
