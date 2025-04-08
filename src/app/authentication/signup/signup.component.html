@@ -123,17 +123,15 @@
                         <div class="mb-3">
                             <label class="font-monospace" for="companyType">Company Type</label>
                             <select formControlName="companyField" class="custom-select form-control" id="companyType">
-                                <option value="IT">IT</option>
-                                <option value="Insurance">Insurance</option>
-                                <option value="Finance">Finance</option>
-                                <option value="Medicine">Medicine</option>
+                                <option value="it">IT</option>
+                                <option value="insurance">Insurance</option>
+                                <option value="finance">Finance</option>
+                                <option value="medicine">Medicine</option>
                             </select>
                             <div class="text-danger font-monospace" *ngIf="isSubmitted && companyForm.get('companyField')?.hasError('required')">
                                 Company field is required
                             </div>
                         </div>
-                        
-
                         <button class="btn btn-secondary font-monospace" type="button" (click)="registerAdmin()">Register</button>
                       </form>
 

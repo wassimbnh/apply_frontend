@@ -56,8 +56,8 @@ export class SignupClientComponent implements OnInit{
     if(this.registerClientForm.valid){
       this.authService.signUpClient(this.registerClientForm.value).subscribe(
         (response)=>{
-          console.log("response:", response) 
-            
+          this.successMessage = 'Please check you email!'
+          this.isSubmitted = false;
           this.registerClientForm.reset();
           
           setTimeout(() => {

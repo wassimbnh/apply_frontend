@@ -120,24 +120,6 @@ export class SignupComponent implements OnInit {
   }
 
 
-  ngAfterViewInit(): void {
-    const input = document.querySelector('#phoneNumber') as HTMLInputElement;
-    const flagContainer = document.querySelector('#flag-container') as HTMLDivElement;
-
-    intlTelInput(input, {
-      initialCountry: 'tn',
-      separateDialCode: true,
-      utilsScript: 'node_modules/intl-tel-input/build/js/utils.js',
-      customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
-        return '+' + selectedCountryData.dialCode + ' ' + selectedCountryPlaceholder;
-      },
-      nationalMode: false,
-      onlyCountries: ['tn', 'us', 'gb', 'de', 'fr', 'es'],
-    });
-
-    // Add flag class to flag container
-    flagContainer.classList.add('flag-icon');
-  }
 }
 
 
