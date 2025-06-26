@@ -23,28 +23,37 @@
                         {{ errorMessage }}
                       </div>
                       
-                    <form [formGroup]="registerClientForm" (ngSubmit)="registerClient()" style="margin-bottom: 100px;">
+                    <form [formGroup]="registerUserForm" (ngSubmit)="signUpUser()" style="margin-bottom: 100px;">
                         <div class="mb-3">
                             <label class="font-monospace">First Name</label>
                             <input formControlName='firstName' type="text" class="form-control" name="firstName" id="firstName">
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('firstName')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('firstName')?.hasError('required')">
                                 First name is required
+                            </div>
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('firstName')?.hasError('minlength')">
+                                First name must be longer
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="font-monospace">Last Name</label>
                             <input formControlName='lastName' type="text" class="form-control" name="lastName" id="lastName">
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('lastName')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('lastName')?.hasError('required')">
                                 Last name is required
+                            </div>
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('lastName')?.hasError('minlength')">
+                                Last name is must be longer
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="font-monospace">Email</label>
                             <input formControlName='email' type="text" class="form-control" name="email" id="email">
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('lastName')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('email')?.hasError('required')">
                                 Email is required
+                            </div>
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('email')?.hasError('email')">
+                                Must be an email
                             </div>
                         </div>
                     
@@ -57,7 +66,7 @@
                                 </div>
                                 <input formControlName="phone" type="tel" class="form-control" name="phone" id="phone">
                             </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('phone')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('phone')?.hasError('required')">
                                 Phone is required
                             </div>
                         </div>
@@ -65,13 +74,13 @@
                         <div class="mb-3">
                             <label class="font-monospace" for="password">Password</label>
                             <input formControlName='password' type="password" class="form-control" name="password" id="password">
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('password')?.hasError('required')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('password')?.hasError('required')">
                                 Password is required
                             </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('password')?.hasError('minlength')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('password')?.hasError('minlength')">
                                 Password must al least contain 8 characters
                             </div>
-                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerClientForm.get('password')?.hasError('maxlength')">
+                            <div class="text-danger font-monospace" *ngIf="isSubmitted && registerUserForm.get('password')?.hasError('maxlength')">
                                 Password must be no longer than 20 characters
                             </div>
                         </div>

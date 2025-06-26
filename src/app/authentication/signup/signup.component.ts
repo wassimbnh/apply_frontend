@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import intlTelInput from 'intl-tel-input';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import { AuthenticationService } from '../../services/authentication.service';
-import { error } from 'console';
 import { Router } from '@angular/router';
+import { APIResponse, CompanyData } from '../../interfaces';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   
-  constructor(private authService: AuthenticationService,
-             private router :Router){
+  constructor(private readonly authService: AuthenticationService,
+             private readonly router :Router){
 
   }
+
   registerClientForm: FormGroup = new FormGroup({});
   companyForm: FormGroup = new FormGroup({});
   isSubmitted:boolean = false;
@@ -75,7 +75,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  registerAdmin(): void {
+  onSignupCompany(): void {
     this.isSubmitted = true;
     const currentForm = this.getCurrentForm();
     
@@ -93,27 +93,34 @@ export class SignupComponent implements OnInit {
         this.currentStep++;
       } else {
         console.log(this.combinedFormValues);
-        this.authService.signUpAdmin(this.combinedFormValues).subscribe(
-          (response) => {
-            // Handle successful response if needed
-            this.successMessage = 'Please check your email !'; 
-            
-            this.registerClientForm.reset();
-            this.companyForm.reset();
-            
-            setTimeout(() => {
-              this.router.navigate(['/']);
-            }, 2000); 
-          },
-          (error) => {
-            this.confirmEmailMessage = error.message
-            console.error('Signup error:', error);
-          })
+        this.signupCompany(this.combinedFormValues)
 
       }
       
     }
   }
+
+  signupCompany(companyData: CompanyData) {
+
+    this.authService.signUpCompany(companyData).subscribe({
+      next: (response: APIResponse<CompanyData>) => {
+        // Handle successful response if needed
+        this.successMessage = response.message; 
+        
+        this.registerClientForm.reset();
+        this.companyForm.reset();
+        
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2000); 
+      },
+      error: (error) => {
+        this.confirmEmailMessage = error.message
+        console.error('Signup error:', error);
+      }})
+
+  }
+
   private getCurrentForm(): FormGroup {
     // Return the current form based on the current step
     return this.currentStep === 1 ? this.registerClientForm : this.companyForm;

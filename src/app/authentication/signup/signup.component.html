@@ -25,7 +25,7 @@
                         <small class="text-muted font-monospace">{{ progressPercentage }}% complete</small>
                       </div>
                       
-                    <form *ngIf="currentStep === 1"[formGroup]="registerClientForm" (ngSubmit)="registerAdmin()" style="margin-bottom: 100px;">
+                    <form *ngIf="currentStep === 1"[formGroup]="registerClientForm" (ngSubmit)="onSignupCompany()" style="margin-bottom: 100px;">
                         <div class="mb-3">
                             <label class="font-monospace">First Name</label>
                             <input formControlName='firstName' type="text" class="form-control" name="firstName" id="firstName">
@@ -78,10 +78,10 @@
                         </div>
                     
                         
-                        <button class="btn btn-secondary font-monospace" type="submit" (click)="registerAdmin()" >Next</button>
+                        <button class="btn btn-secondary font-monospace" type="submit" (click)="onSignupCompany()" >Next</button>
                     </form>
                     
-                    <form *ngIf="currentStep === 2" [formGroup]="companyForm" (ngSubmit)="registerAdmin()" style="margin-bottom: 100px;">
+                    <form *ngIf="currentStep === 2" [formGroup]="companyForm" (ngSubmit)="onSignupCompany()" style="margin-bottom: 100px;">
 
                         <div class="mb-3">
                             <label class="font-monospace" for="companyName">Company Name</label>
@@ -132,7 +132,7 @@
                                 Company field is required
                             </div>
                         </div>
-                        <button class="btn btn-secondary font-monospace" type="button" (click)="registerAdmin()">Register</button>
+                        <button class="btn btn-secondary font-monospace" type="button" (click)="onSignupCompany()">Register</button>
                       </form>
 
                 </div>

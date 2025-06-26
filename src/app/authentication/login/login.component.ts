@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 
 @Component({
@@ -27,15 +27,14 @@ export class LoginComponent {
     const queryParams = this.route.snapshot.queryParams;
 
     const confirmEmailToken = queryParams['confirmEmailToken'];
-    this.authService.confirmEmail(confirmEmailToken).subscribe(
-      (response) =>{
+    this.authService.confirmEmail(confirmEmailToken).subscribe({
+      next: (response) =>{
         console.log(response)
       },
-      (error)=>{
+      error: (error)=>{
         console.log(error)
-        //this.confirmEmailMessage = error.message;
       }
-    )
+    })
   }
 
   initRegisterForm(): void {
